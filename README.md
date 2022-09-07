@@ -3,6 +3,13 @@
   <ol>
     <li><a href="#about-the-project">About The Project</a></li>
     <li><a href="#application-security-introduction">Application Security Introduction</a></li>
+      <ol>
+        <li><a href="#resources">Resources</a></li>
+        <li><a href="#owasp-vs-sans">OWASP VS SANS</a></li>
+        <li><a href="#definitions">Definitions</a></li>
+        <li><a href="#cve-cvss-and-cwe">CVE, CVSS and CWE</a></li>
+        <li><a href="#api-security">API Security</a></li>
+      </ol>
   </ol>
 </details>
 
@@ -129,7 +136,111 @@
                                         ************************
 ```
 
+&nbsp;
+
+---
+
+&nbsp;
+
+### Resources
+
+- [OWASP Top Ten](https://owasp.org/www-project-top-ten/)
+- [OWASP Cheat Sheet Series](https://owasp.org/www-project-cheat-sheets/)
+- [OWASP Projects](https://owasp.org/projects/)
 - [OWASP WebGoat](https://owasp.org/www-project-webgoat/)
+- [OWASP Juice Shop](https://owasp.org/www-project-juice-shop/)
+- [OWASP Zed Attack Proxy (ZAP)](https://www.zaproxy.org/)
+- [OWASP OWTF](https://owasp.org/www-project-owtf/)
+- [OWASP Application Security Verification Standard](https://owasp.org/www-project-application-security-verification-standard/)
+- [OWASP Secure Coding Practices-Quick Reference Guide](https://owasp.org/www-project-secure-coding-practices-quick-reference-guide/migrated_content)
+- [OWASP Java HTML Sanitizer](https://owasp.org/www-project-java-html-sanitizer/)
+- [OWASP CSRFGuard](https://owasp.org/www-project-csrfguard/)
+- [OWASP Enterprise Security API (ESAPI)](https://owasp.org/www-project-enterprise-security-api/)
+- [OWASP Security Knowledge Framework](https://owasp.org/www-project-security-knowledge-framework/)
+- [OWASP Web Security Testing Guide](https://owasp.org/www-project-web-security-testing-guide/)
+- [OWASP Dependency-Track](https://owasp.org/www-project-dependency-track/)
+- [OWASP Defectdojo](https://owasp.org/www-project-defectdojo/)
+- [CWE/SANS TOP 25 Most Dangerous Software Errors](https://www.sans.org/top25-software-errors/)
+- [OWASP API Security Top 10 cheat sheet](https://apisecurity.io/encyclopedia/content/owasp/owasp-api-security-top-10-cheat-sheet.htm)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+### OWASP VS SANS
+
+- In developing their Top 25 list, CWE/SANS included a comparision to the OWASP Top Ten making a clear statement of the importance of OWASP's list while also recognizing distinct differences between the two
+- Most clearly defined is that the OWASP Top Ten deals strictly with vulnerabilities found in web applications where the Top 25 deals with weaknesses found in desktop and server applications as well
+- A further contrast is seen in how the list is compiled. OWASP giving more credence to the risk each vulnerability presents as opposed to the CWE/SANS Top 25 that included the prevalence of each weakness.
+- This factor is what gives Cross-site scripting the edge in the Top 25 as it is ranked number 1 while OWASP has it ranked at number 2
+
+&nbsp;
+
+---
+
+&nbsp;
+
+### Definitions
+
+- **Confidentiality:** Concept of preventing the disclosure of information to unauthorized parties
+- **Integrity:** Refers to protecting the data from unauthorized alteration
+- **Availability:** Access to systems by authorized personnel can be expressed as the system's availability
+- **Authentiction:** Authentication is the process of determining the identity of a user
+- **Authorization:** Authorization is the process of applying access control rules to a user process, determining whether or not a particular user process can access an object
+- **Accounting (Audit):** Accounting is a means of measuring activity.
+- **Non-Repudiation:** Non-repudiation is the concept of preventing a subject from denying a previous action with an object in a system
+- **Least Privilege:** Subject should have only the necessary rights and privileges to perform its current task with no additional rights and privileges
+- **Separation of Duties:** Ensures that for any given task, more than one individual needs to be involved
+- **Defense in Depth:** Defense in depth is also known by the terms layered security and diversity defense
+- **Fail Safe:** When a system experiences a failure, it should fail to a safe state. (Doors open when there is a power failure)
+- **Fail Secure:** The default state is locked or secured. So a fail secure lock locks the door when power is removed
+- **Single point of failure:** A single point of failure is any aspect of a system that, if it fails, the entire system fails
+- **Threat Actors**
+  - Script Kiddie
+  - Insider
+  - Hacktivist & Terrorist
+  - Cybercriminal
+  - Advanced Persistent Threat
+
+&nbsp;
+
+---
+
+&nbsp;
+
+### CVE, CVSS and CWE
+
+- **Common Vulnerabilities and Exposure (CVE)** is a list of common identifiers for publicly known cyber security vulnerabilities
+  - One identifier for one vulnerability with one standardized description
+  - A dictionary rather than a database
+  - The way to interoperability and better security coverage
+  - A basis for evaluation among services, tools, and databases
+  - Industry-endorse via the CVE Numbering Authorities, CVE Board, and numerous products and services that include CV
+  - [CVE List Home](https://cve.mitre.org/cve/)
+- **Common Vulnerability Scoring System (CVSS)** provides a way to capture the principal characteristics os a vulnerability and produce a numberical score reflecting its severity. The numerical score can then be translated into a qualitative representation (such as low, medium, high, and critical) to help organiations properly assess and prioritize their vulnerability management processes
+  - [National Vulnerability Database](https://nvd.nist.gov/vuln-metrics/cvss)
+- **Common Weakness Enumeration (CWE)** is a community-developed list of common software security weaknesses. It serves as a common language, a measuring stick for software security tools, and as a baseline for weakness identification, mitigation, and prevention efforts
+  - At is core, CWE is a list of software weaknesses types
+  - Three types:
+    - **Research:** This view is intended to facilitate research into weaknesses, including their inter-dependencies and their role in vulnerabilities
+    - **Development:** This view organizes weaknesses aroun concepts that are frequently used or encountered in software development
+    - **Architecture:** This view organizes weaknesses according to common architectural security tactics
+  - [Common Weakness Enumeration (CWE)](https://cwe.mitre.org/)
+
+![defense-in-depth-example](/diagrams/defense-in-depth-example.png)
+
+- "**Defense In Depth** is an approach to cybersecurity in which a series of defensive mechanisms are layered in order to protect valuable data and information. If one mechanism fails, another steps up immediately to thwart an attack." -ForcePoint
+  - Don't rely on Defense In Depth to always protect your app
+  - Systems fail, they can be circumvented by the weakest link
+  - Your app may not always be behind those defenses
+
+![proxy_tools](/diagrams/proxy_tools.png)
+
+- [Charles](https://www.charlesproxy.com/)
+- [Telerik Fiddler](https://www.telerik.com/fiddler)
+- Browser "Developer Tools"
 
 &nbsp;
 
