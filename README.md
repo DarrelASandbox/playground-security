@@ -7,8 +7,9 @@
         <li><a href="#resources">Resources</a></li>
         <li><a href="#owasp-vs-sans">OWASP VS SANS</a></li>
         <li><a href="#definitions">Definitions</a></li>
-        <li><a href="#cve-cvss-and-cwe">CVE, CVSS and CWE</a></li>
+        <li><a href="#cve-cvss--cwe">CVE, CVSS & CWE</a></li>
         <li><a href="#api-security">API Security</a></li>
+        <li><a href="#owasp-top-ten-additional-notes">OWASP Top Ten (Additional Notes)</a></li>
       </ol>
   </ol>
 </details>
@@ -210,7 +211,7 @@
 
 &nbsp;
 
-### CVE, CVSS and CWE
+### CVE, CVSS & CWE
 
 - **Common Vulnerabilities and Exposure (CVE)** is a list of common identifiers for publicly known cyber security vulnerabilities
   - One identifier for one vulnerability with one standardized description
@@ -236,11 +237,101 @@
   - Systems fail, they can be circumvented by the weakest link
   - Your app may not always be behind those defenses
 
-![proxy_tools](/diagrams/proxy_tools.png)
+![proxy-tools](/diagrams/proxy-tools.png)
 
 - [Charles](https://www.charlesproxy.com/)
 - [Telerik Fiddler](https://www.telerik.com/fiddler)
 - Browser "Developer Tools"
+
+&nbsp;
+
+---
+
+&nbsp;
+
+### OWASP Top Ten (Additional Notes)
+
+- **A01 Broken Access Control**
+  - **Authentication** is providing and validating identity.
+  - **Authorization** includes the execution rules that determines what functionality and data the user (or Principal) may access, ensuring the proper allocation of access rights after authentication is successful.
+  - **Access Control**
+    - Enforces policy such that users cannot act outside of their intended permissions
+    - Failures typically lead to unauthorized information disclosure, modification or destruction of all data, or performing a business function outside of the limits of the user.
+    - Weaknesses are common due to the lack of automated detection, and lack of effective functional testing by application developers.
+    - The technical impact is attackers acting as users or administrators, or users using privileged funcitons, or creeating, accessing, updating or deleting every record.
+- **A02 Cryptographic Failures**
+  - **Data Protection**
+    - **Protected Health Information (PHI)**
+      - Names, dates, phone/ fax numbers, email, SSN, MRN, account numbers, biometric (finger, retinal, voice prints) & images
+    - **Personally Identifiable Information (PII)**
+      - Name, address, passport, vehicle information, drivers license, credit card numbers, digital identity, birthplace, genetic information and login name
+    - **Sensitive Financial Infnormation**
+      - Credit/ Debit card numbers and security codes, account numbers, loan agreements, loan details, tax ID & PoS tansactions
+- **A03 Injection**
+  - **Other Injection Flaws**
+    - **OS Command**
+    - **LDAP**
+    - **XPATH**
+- **A04 Insecure Design**
+  - **Bad Bots**
+    - A retail chain's e-commerce website does not have protection against bots run by scalpers buying high-end video cards to resell auction websites. This creates terrible publicity for the video card makers and retails chain owners and enduring bad blood with enthusiasts who cannot obtain these cards at any price. Careful anti-bot design and domain logic rules, such as purchases made within a few seconds of availability, might identify inauthentic purchases and rejected such transactions.
+- **A05 Security Misconfiguration**
+  - Absence of security settings in:
+    - Application
+    - Framework
+    - Database
+    - Web server
+    - Platform
+  - Default settings in the cloud
+  - A cloud service provider (CSP) has default sharing permissions open to the Internet by other CSP users. This allows sensitive data stored within cloud storage to be accessed.
+- **A06 Vulnerable and Outdated Components**
+  - Most applicaions include either commercial products or Open Source Software(OSS) within their software bundles.
+    - Find a solution like **Dependency Check**, GitLab, or Jfrog Xray, to automatically scan for vulnerable packages.
+  - For commercial products, most major vendors such as Oracle, Google and IBM provide **Security Bulletins to distribution lists** for notification purposes. Make sure you are signed up for these services.
+    - [Sign-up](https://nvd.nist.gov/general/email-list) for regular security bullets from the National Vulnerability Database and regularly monitor components for security issues and updated versions.
+  - **Notification**
+    - Have means for receiving notifications on ptentially vulnerable software.
+    - Many vendors like Microsoft already offer a notification service, however other services or feeds exist.
+    - Receiving notification is only part of the solution. You must also be able to:
+      - Know where to patch (what systems or software arre vulnerable)
+      - Have the ability to test the new patch
+      - Have a means to deliver the patch
+      - Ability to notify those impacted by the changes to teh system (users, customers, etc)
+  - **Patching Process**
+    - Development -> Pre Prod -> Production
+    - Testing conducted at Development and Pre Prod
+- **A07 Identification and Authentication Failures**
+  - Attacks:
+    - Password guessing attack (social engineering)
+      - John from IT, needs your help
+    - Dictionary attack
+      - Dictionary words that are hased and tests
+    - Brute force attack
+      - Guessing or targeted hashes
+    - Username enumeration
+      - Guessable patterns of usernames or log in failure messages that reveal too much
+    - Phishing
+      - Trick users into providing their credentials to an imposter, look-alike site
+  - Account Recovery Risks:
+    - Social engineering
+      - Emailing a password reset form without using something like two factor
+    - Easily guessable security answers
+      - Answers that can be easily found online
+      - "What school did you attend?"
+    - Password sent through insecure channels
+      - Email
+    - Password change not required
+      - Once you've been given a new password, it should be changed on the next login
+- **A08 Software and Data Integrity Failures**
+  - **Case Study:** [NPR - A 'Worst Nightmare' Cyberattack: The Untold Story Of The SolarWinds Hack](https://www.npr.org/2021/04/16/985439655/a-worst-nightmare-cyberattack-the-untold-story-of-the-solarwinds-hack)
+- **A09 Security Logging and Monitoring Failures**
+  - Security Information and Event Management (SIEM)
+
+![siem-solution-purplesec](/diagrams/siem-solution-purplesec.png)
+
+- **A10 Server-Side Request Forgery (SSRF)**
+
+![ssrf-occurs-when-we-do-not](/diagrams/ssrf-occurs-when-we-do-not.png)
 
 &nbsp;
 
