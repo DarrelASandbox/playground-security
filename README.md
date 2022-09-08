@@ -11,6 +11,7 @@
         <li><a href="#api-security">API Security</a></li>
         <li><a href="#owasp-top-ten-additional-notes">OWASP Top Ten (Additional Notes)</a></li>
       </ol>
+    <li><a href="#defenses-and-tools">Defenses and Tools</a></li>
   </ol>
 </details>
 
@@ -126,15 +127,15 @@
     10. **Compromise Recording:** Audit everything
 
 ```
-                                                 *
-                                               *   *
-                                              *      *
-                                             *  Goals  *          -> C.I.A
-                                            *************
-                                           *  Principles  *       -> Point 1 to 10
-                                          ******************
-                                         *     Mechanisms    *    -> What this course is about
-                                        ************************
+                                       *
+                                     *   *
+                                    *      *
+                                   *  Goals  *          -> C.I.A
+                                  *************
+                                 *  Principles  *       -> Point 1 to 10
+                                ******************
+                               *     Mechanisms    *    -> What this course is about
+                              ************************
 ```
 
 &nbsp;
@@ -332,6 +333,154 @@
 - **A10 Server-Side Request Forgery (SSRF)**
 
 ![ssrf-occurs-when-we-do-not](/diagrams/ssrf-occurs-when-we-do-not.png)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## Defenses and Tools
+
+- **Cross Site Scripting (XSS)** is a type of computer security vulnerability typically found in web applications. XSS enables attackers to inject client-side scripts into web pages viewed by other users. A cross-site scripting vulnerability may be used by attackers to bypass access controls such as the same-origin policy.
+- This subversion is possible because the wb application fails to properly validate input from the web browser (i.e., client) and/ or fails to properly escape that input in the response.
+
+![xss_reflected](/diagrams/xss_reflected.png)
+
+&nbsp;
+
+![xss_persistent](/diagrams/xss_persistent.png)
+
+- **Content Security Policy (CSP)**
+  - [MDN - CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
+  - Is an added layer of security that helps to detect and mitigate certain types of attacks, including XSS and data injection attacks.
+  - To enable CSP, you need to configure your web server to return the Content-Security-Policy HTTP header.
+  - Browsers that don't support it still work with servers that implement it, and vice-versa: browsers that don't support CSP simply ignore it, functioning as usual, defaulting to the standard same-orign policy for web content.
+  - **Mitigating XSS**
+    - CSP makes it possible for server administrators to reduce or eliminate the vectors by which XSS can occur by specifying the domains that the browser should consider to be valid sources of executable scripts.
+    - A CSP compatible browser will then only execute scripts loaded in source files received from those whitelisted domains, ignoring all other script (including inline scripts and event-handling HTML attributes).
+    - As an ultimate form of protection, sites that want to never allow scripts to be executed can opt to globally disallow script execution.
+  - **Writing a policy**
+    - A policy is described using a series of policy directives, each of which describes the policy for a certain resource type or policy area.
+    - Your policy should include a default-src policy directive, which is a fallback for other resource types when they don't have policies of their own.
+    - A policy needs to include a default-src or script-src directive to prevent inline scripts from running, as well as blocking the use of eval().
+    - A policy needs to include a default-src directive to restrict inline styles from being applied from a `<style>` element or a style attribute.
+  - **Example:** This policy allows images, scripts, AJAX, and CSS from the same origin, and does not allow any other resources to load (eg. object, frame, media, etc)
+    - `Content-Security-Policy: default-src'none'; script-src'self'; connect-src 'self'; img-src 'self'; style-src 'self';`
+  - [CSP Evaluator](https://csp-evaluator.withgoogle.com/)
+
+![security_models_os_design](/diagrams/security_models_os_design.png)
+
+- **Security Model** are used to understand the systems and processes developed to enforce security principles.
+  - 3 key elements play a role in systems with respect to model implementation:
+    - People
+    - Processes
+    - Technology
+  - Addressing a single element of the 3 may provide benefits, but more effectiveness can be achieved through addressing multiple elements.
+  - Access Control Models
+    - [Fundamental Concepts of Security Models & how they work](https://ipspecialist.net/fundamental-concepts-of-security-models-how-they-work/)
+    - [Introduction To Classic Security Models](https://www.geeksforgeeks.org/introduction-to-classic-security-models/)
+    - Access Control List (ACL)
+    - Bell-LaPadula model
+    - Role-based Access Control
+    - Access-based Access Control
+    - Biba Integrity Model
+    - Clark-Wilson Model
+    - Brewer-Nash Model (Chinese Wall)
+    - Data Flow Diagrams
+    - Use Case Models
+    - Assurance Models
+- **Software Composition Analysis(SCA)**
+  - SCA is the process of validating that the components, libraries, and opensource software that is used in an application is free from known vulnerabilities and license compliance.
+  - These external software components can come from several places:
+    - Downloads, commercial applications, third-aprty libraries and software, and from outsourced development by consulting
+  - SCA can provide:
+    - Component tracking and inventory
+    - Vulnerability identification and remediation recommendation
+    - License management
+  - [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/)
+  - [JFrog Xray](https://jfrog.com/xray/)
+
+![software_composition_analysis](/diagrams/software_composition_analysis.png)
+
+&nbsp;
+
+![dependency_check](/diagrams/dependency_check.png)
+
+&nbsp;
+
+![jfrog_xray](diagrams/jfrog_xray.png)
+
+- **Security Knowledge Framework (SKF)**
+  - [Security Knowledge Framework Demo](https://demo.securityknowledgeframework.org/dashboard)
+  - **Why**
+    - Security by design
+    - Information is hard to find
+    - Examples lack security details
+    - Security is hard
+    - Together we can create secure web applications
+    - Defensive coding approach
+    - SKF is the first step in SDLC
+  - **How SKF can be used**
+    - Security Requirements OWASP ASVS for development and for third party vendor applications
+    - Security knowledge reference (Code examples/ Knowledge Base items)
+    - Security is part of design with the pre-development functionality in SKF
+    - Security post-development functionality in SKF for verification with the OWASP ASVS
+  - **Pre development stage**
+    - Here we detect threats beforehand and we provide developers with secure development patterns as well as providing feedback and solutions on how to handle their threats.
+  - **Post development stage**
+    - By means of checklists we guide developers through a process where we harden their application infrastructure and functions by providing feedback and solutions
+- **Source Code Review**
+  - **Who to include**
+    - Developers
+    - Architects
+    - Security SME (Subject Matter Expert)
+    - Depending on the portion of the application you may need to include the SME for that topic (Authentication, DB logic, User Experience...)
+  - **Scope and aid**
+    - Code reviews should take into consideration the threat model and high-risk transactions in the application.
+    - A completed threat model will highlight the areas of concern.
+    - Any time code is added/ updated in those high-risk areas a code review should include a security component.
+    - When changes are required to the threat model due to findings during that code review, the threat model should ber updated.
+  - **Understand the risk**
+    - **Ease of Exposure:**
+      - Is the code change in a piece of code directly exposed to the internet?
+      - Does an insider use the interface directly?
+    - **Value of Loss:**
+      - How much could be lost if the module has a vulnerability introduced?
+      - Does the module contain some critical passsword hashing mechanism, or a simple change to HTML border on some internal test tool?
+    - **Regulatory Controls:**
+      - If a piece of code implements business logic associated with a standard that must be complied with, then these modules can be considered high risk as the penalties for non-conformity can be high.
+    - When considering the risk of code under review, consider some common criteria for establishing risk of a particular code module. The higher the risk, the more thorough the review should be.
+  - **Understanding**
+    - Application features and business logic
+    - Context/ Sensitive Data
+    - The code (language, feature, nuance of language)
+    - User roles and access rights (anonymous access?)
+    - Application type (mobile, desktop, web)
+    - Design and architecture of the application
+    - Company standards, guidelines and requirements that apply
+    - The reviewer will need certain information about the development in order to be effective.
+      - Design documents, business requirements, functional specifications, test results, and the like.
+    - If the reviwer is not part of the development team, they need to talk wit the developers and the lead architect for the application and get a sense of the application.
+      - Does not have to be a long meeting, it could be a whiteboard session for the development team to share some basic information about the key security considerations and controls
+  - **Information gathering tips**
+    - Walkthrough of the actual running application.
+    - A brief overview of the structure of the code base and any libraries.
+    - Knowing the architecture of the application goes a long way in understanding the security threats that are applicable.
+      - Tech stack, deployment, users and data
+    - All the required information of the proposed design including flow charts, sequence diagrams, class diagrams and requirements documents to understand the objective of the proposed design should be used as reference during the review.
+  - **Using the checklist**
+    - When using the Code Review Checklist Template, the reviewer may filter out non-applicable categories.
+    - It is recommneded that the complete list is used for code that is high risk. For instance, code that impacts patient safety workflows or mission critical functionality shall use the complete code review list.
+    - The code review template should be completed and appended during code check-in in the code repository or with the completed code review using a tool (for instance Crucible).
+  - **When to peform the review**
+    - **Code:** Code review during pre-commit means that dangerous or sub-par code does not make it to the code branch. However this does reduce the time to delivery of new code.
+    - **Post:** Post-commit allows for faster delivery of software but runs the risk of allowing dangerous code into the branch. Other developers may also add their code which can make future reviews more cumbersome.
+    - **Audit:** During a code audit can be triggered by an even such as a found vulnerability and should review the entire area of concern rather than focus on a single code commit.
+  - **What to do with results**
+    - A vulnerability or risk found during a code review should be addressed immediately if found in the pre-commit phase, however there may be cases when code cannot be mitigated, or issues are found after code has been committed. In those cases, go through a Risk Rating to determine its impact and understand the timeframe for remediation.
+- [OWASP Secure Coding Dojo](https://owasp.org/www-project-secure-coding-dojo/)
+- [OWASP Code Review Guide](https://owasp.org/www-project-code-review-guide/)
 
 &nbsp;
 
