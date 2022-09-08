@@ -60,7 +60,7 @@
   - Don't develop your own authentication schemes
   - Use open source frameworks that are actively maintained by the community.
   - Use strong passwords
-  - Require current credential when sensistive information is requested or changed
+  - Require current credential when sensitive information is requested or changed
   - Multi-factor authentication (e.g. sms, password, fingerprint, iris scan etc.)
   - Log out or expire session after X amount of time
   - Be careful with 'remember me' functionality
@@ -100,7 +100,7 @@
 - <b>What is it?</b>
   - Many older or poorly configured XML processors evaluate external entity references within XML documents
 - <b>What is the impact?</b>
-  - Extraction of data, remote code execution and denail of service attack
+  - Extraction of data, remote code execution and denial of service attack
 - <b>How to prevent?</b>
   - Use JSON, avoid avoiding serialization of sensitive data
   - Patch or upgrade all XML processors and libraries
@@ -136,7 +136,7 @@
 
 - [Troy Hunt - OWASP Top 10 for .NET developers part 6: Security Misconfiguration](https://www.troyhunt.com/owasp-top-10-for-net-developers-part-6/)
 - <b>What is it?</b>
-  - Human mistake of misconfigurating the system (e.g. providing a user with a default password)
+  - Human mistake of misconfiguring the system (e.g. providing a user with a default password)
 - <b>What is the impact?</b>
   - Depends on the misconfiguration. Worst misconfiguration could result in loss of the system
 - <b>How to prevent?</b>
@@ -226,8 +226,8 @@
 - <b>What is the impact?</b>
   - Allows attacker to persist and tamper, extract, or destroy your data without you noticing it
 - <b>How to prevent?</b>
-  - Log login, access control and serer-side input validation failures
-  - Ensure logs can be consumed easilu, but cannot be tampered with
+  - Log login, access control and server-side input validation failures
+  - Ensure logs can be consumed easily, but cannot be tampered with
   - Continuously improve monitoring and alerting process
   - Mitigate impact of breach: Rotate, Repave and Repair
     - <b>Rotate: </b>changes keys/ password frequently (multiple times a day)
@@ -342,9 +342,9 @@
 ## Software and Data Integrity Failures
 
 - <b>What is it?</b>
-  - E.g. an application that relies on updates from a trusted exernal source, however the update mechanism is compromised
+  - E.g. an application that relies on updates from a trusted external source, however the update mechanism is compromised
 - <b>What is the impact?</b>
-  - Supply chain attack; data exfiltration, ransomwawre, etc
+  - Supply chain attack; data exfiltration, ransomware, etc
 - <b>How to prevent?</b>
   - Verify input (in this case software updates with digital signatures)
   - Continuously check for vulnerabilities in dependencies
@@ -360,7 +360,7 @@
 ## Server-Side Request Forgery
 
 - <b>What is it?</b>
-  - Misuse of prior established trust to accesss other resources. A web application is fetching a remote resource without validating the user-supplied URL
+  - Misuse of prior established trust to access other resources. A web application is fetching a remote resource without validating the user-supplied URL
 - <b>What is the impact?</b>
   - Scan and connect to internal services. In some cases the attacker could access sensitive data
 - <b>How to prevent?</b>
@@ -380,7 +380,7 @@
 
 ![defense_in_depth](/18-Defense_In_Depth/defense_in_depth.png)
 
-- Defense in Depth is commonly refered to as the "castle approach" because it mirrors the layered defenses of a medieval castle. Before you can penetrate a castle you are faced with the moat, ramparts, draw-bridge, towers, battlements and so on.
+- Defense in Depth is commonly referred to as the "castle approach" because it mirrors the layered defenses of a medieval castle. Before you can penetrate a castle you are faced with the moat, ramparts, draw-bridge, towers, battlements and so on.
 - Multi-layered approach with intentional redundancies increases the security of a system as a whole and addresses many different attack vectors.
 
 &nbsp;
