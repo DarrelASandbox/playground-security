@@ -12,6 +12,7 @@
         <li><a href="#owasp-top-ten-additional-notes">OWASP Top Ten (Additional Notes)</a></li>
       </ol>
     <li><a href="#defenses-and-tools">Defenses and Tools</a></li>
+    <li><a href="#session-management">Session Management</a></li>
   </ol>
 </details>
 
@@ -481,6 +482,103 @@
     - A vulnerability or risk found during a code review should be addressed immediately if found in the pre-commit phase, however there may be cases when code cannot be mitigated, or issues are found after code has been committed. In those cases, go through a Risk Rating to determine its impact and understand the timeframe for remediation.
 - [OWASP Secure Coding Dojo](https://owasp.org/www-project-secure-coding-dojo/)
 - [OWASP Code Review Guide](https://owasp.org/www-project-code-review-guide/)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## Session Management
+
+- **Sessions** ensures the ability to identify the user on any subsequent requests as well as being able to apply security access controls, authorized access to the user private data, and to increase the usability of the applicaton. Therefore, current web applications can provide session capabilities both pre and post authntication. Once an authenticated session has been established, the session ID (or token) is temporarily equivalent to the strongest authentication method used by the application.
+  - Such as username and password, passphrases, one-time passwords (OTP), client-based digital certificates, smartcards, or biometrics (such as figngerprint or eye retina).
+- **HTTP** is a stateless protocol where each request and response pair is independent of other web interactions.
+- Session management links both the authentication and authorization modules commonly avilable in web applications:
+  - The **session ID** or **token binds** the user authentication credentials to the user HTTP traffic and the appropraite access controls enforced by the web application.
+  - The complexity of these components in modern web applications, plus the fact that its implementation and binding resides on the web developer's hands makes the implementation of a secure session management module very challenging.
+- **Pre-Auth Sessions -> Authentication -> Session Management -> Access Control -> Session Finalization**
+- Since HTTP and Web Server both are **stateless**, the only way to maintain a session is when some unique information about the session (session id) is passed between server and client in very request and response.
+- **Methods of Session Management:**
+  - **User Authentication:** Common for a user to provide authentication credentials from the login page and then the authentication information is passed between server and client to maintain the session.
+  - **HTML Hidden Field:** A unique hidden field in the hTML and when user starts navigating, we can set its value unique to the user and keep track of the session.
+  - **URL Rewriting:** A session identifier parameter is appended to every request and response to keep track of the session.
+  - **Cookies:** Cookies are small piece of information that are sent by the web server in the response header and gets stored in the browser cookies. When client make further request, it adds the cookie to the request header to keep track of the session.
+
+&nbsp;
+
+- **Federated Identity**
+  - A federated identity in information technology is the means of linking a person's electronic identity and attributes, stored across multiple distinct **identity mangement** systems.
+  - [Federated identity is related to single sign-on (SSO)](https://doubleoctopus.com/blog/standards-regulations/federated-identity-vs-single-sign-on/), in which a user's single authentication ticket, or token, is trusted across multiple IT systems or even organizations.
+  - The "federation" of identity, describes the technologies, standards and use-cases which serve to enable the portability of identity information across otherwise autonomous security domains.
+  - Technologies:
+    - SAML (Security Assertion Markup Language)
+    - OAuth
+    - OpenID
+    - Security Tokens (Simple Web Tokens, JSON Web Tokens, and SAML assertions)
+    - Web Service Specifications, and Windows Identity Foundation
+
+![federated-identity-secret-double-octopus](diagrams/federated-identity-secret-double-octopus.png)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+> **Ivan:** Are GUIDs should be considerable as un-guessable?
+> At 03:58 it was claimed that using GUIDs are recommendable way to creating un-guessable session IDs. It looks like that this statement should be revised, because according to ["Security Considerations" section of RFC 4122](tools.ietf.org/html/rfc4122#section-6) the UUIDs should not be assumed as hard guessable.
+>
+> Also, Raymond Chen also mentioned [that](devblogs.microsoft.com/oldnewthing/20150701-00/?p=45241), as a rule of thumb, GUIDs are for uniqueness, not for randomness.
+
+> **Derek:** Depending on your use case a GUID is still considered sufficient. You may also generate your GUIDs using v4 GUID algorithm, and a cryptograpically secure psuedo random number generator. In any case, it's important to understand what your user case is and level of risk tolerance is in order to determine your best path forward. Hope that helps.
+
+&nbsp;
+
+---
+
+&nbsp;
+
+- **Java Session Management = HTTPSESSION**
+  - Servlet API provides Session management through HttpSession interface. We can get session from HttpServletRequest object using following methods. HttpSession allows us to set objects as attributes that can be retrieved in future requests.
+    - `HttpSession getSesssion()`
+    - `HttpSession getSession(boolean flag)`
+  - When `HttpServletRequest getSession()` does not return an active session, then it creates the new HttpSession object and adds a Cookie to the response object with name JSESSIONID and value as session id.
+  - This cookie is used to identify the HttpSession object in further requests from client.
+  - There may be times where the browser has cookies disabled.
+  - The application may choose to pass session information in the URL
+  - The URL can be encoded with `HttpServletResponse encodeURL()` method
+    - In a redirect the request to another resource can be encoded with `encodedRedirectURL()` method.
+  - However, there is a clear security concern with the session in the URL
+
+![dot_net_session](/diagrams/dot_net_session.png)
+
+- **.NET Sessions**
+  - **.Net Session Management**
+    - .NET session state supports several different storage options for session data. Each option is identified by a value in the `SessionStateMode` enumeration. The following list describes the avaialble session state modes:
+    - You can specify which mode you want .NET session state to use by assigning a `SessionStateMode` enumeration values to the `mode` attribute of the sessionState element in your application's `Web.config` file. Modes other than `InProc` and `Off` require additonal parameters, such as connetion-string values.
+    - `Custom`
+    - `InProc`
+    - `Off`
+    - `SQLServer`
+    - `StateServer`
+
+&nbsp;
+
+- [JSON Web Token](https://jwt.io/)
+- [OAuth Community Site](https://oauth.net/)
+- [OpenID](https://openid.net/)
+- [OpenID Connect](https://developers.google.com/identity/protocols/oauth2/openid-connect)
+- **OAuth & OpenID Connect**
+  - OAuth is directly related to OpenID Connect (OIDC) since OIDC is an authentication layer built on top of OAuth 2.0. OAuth is also distinct from XACML, which is authorization policy standard.
+  - OAuth can be used in conjunction with XACML where OAuth is used for ownership consent and access delegation whereas XACML is used to define the authorization policies (e.g. managers can view documents in their region).
+- **What is OpenID Connect**
+  - OpenID Connect 1.0 is a simple identity layer on top of the OAuth 2.0 protocol.
+  - It allows Clients to verify the identity of the End-User based on the authentication performed by an Authorization Server, as well as to obtain basic profile information about the End-User in an interoperable and REST-like manner.
+  - OpenID Connect allows clients of all types, including Web-based, mobile, and JavaScript clients, to request and receive information about authenticated sessions and end-users.
+  - The specification suite is extensible, allowing participants to use optional features such as encryption of identity data, discovery of OpenID Providers, and session mangement, when it makes sense for them.
+
+![openid_connect_flow](/diagrams/openid_connect_flow.png)
 
 &nbsp;
 
