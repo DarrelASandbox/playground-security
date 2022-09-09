@@ -24,6 +24,7 @@
     <li><a href="#hashing">Hashing</a></li>
     <li><a href="#public-key-infrastructure-pki">Public Key Infrastructure (PKI)</a></li>
     <li><a href="#password-handling">Password Handling</a></li>
+    <li><a href="#frameworks-and-process">Frameworks and Process</a></li>
   </ol>
 </details>
 
@@ -984,6 +985,98 @@
   - Predicts hwo difficult a given password would be to crack through guessing, brute force cracking, dictionary attacks or other common methods.
   - Encryption creates randomness which cannot be compressed as well. For maximum efficiency you should compress before encrypting
 - [Kaspersky Password Checker](https://password.kaspersky.com/)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## Frameworks and Process
+
+- **Data Classification**
+  - Restricted
+  - Confidential
+  - Internal
+  - Public
+- **Types of Data**
+  - PII (Personally Identifiable Information)
+  - PHI (Protected Health Information)
+    - HIPAA (Health Insurance Portability and Accountability Act)
+      - Title II: Preventing Healthcare Fraud and Abuse; Administrative Simplification; Medical Liability Reform
+      - [What are the Penalties for HIPAA Violations?](https://www.hipaajournal.com/what-are-the-penalties-for-hipaa-violations-7096/)
+      - [What is the HITECH Act?](https://www.hipaajournal.com/what-is-the-hitech-act/)
+  - PCI (Payment Card Industry)
+    - The Payment Card Industry Data Security Standard (PCI DSS) is an information security standard for organizations that handle branded credit cards from the major card schemes.
+    - The PCI Standard is mandated by the card brands and administered by the Payment Card Industry Security Standards Council.
+    - The standard was created to increase controls around cardholder data to reduce credit card fraud.
+    - **Components:**
+      - Qualified Security Assessor (QSA)
+      - Report on Compliance (ROC)
+      - Self-Assessment Questionnaire (SAQ)
+    - Validation of compliance is performed annually, either by an external QSA or by a firm specific Internal Security Assessor that creates a Report on Compliance (ROC) for organizations handling large volumes of transactions, or by SAQ for companies handling smaller volumes.
+    - Compliance with PCI DSS is not required by federal law in the United States. However, the laws of some U.S states either refer to PCI DSS directly, or make equivalent provisions.
+    - The PCI Data Security Standard specifies twelve requirements for compliance, organized into six logically related groups called "control objectives."
+    - Objectives of PCI Security Requirements
+      - Minimizing the Attach Surface
+      - Software Protection Mechanisms
+      - Secure Software Operations
+      - Secure Software Lifecycle Management
+
+![pci_dss_compliance](diagrams/pci_dss_compliance.png)
+
+- **Continuous Integration (CI)**
+  - Automation that delivers software more frequently to an environment.
+  - A development practice that requires developers to integrate code into a shared repository several times a day.
+  - Each check-in is then verified by an automated build, allowing teams to detect problems early
+  - Because you're integrating so frequently, there is significantly les back-tracking to discover where things went wrong, so you can spend more time building features.
+  - CI is cheap. Not integrating continuously is expensive.
+  - Not following a continuous approach, means you'll have longer periods between integrations.
+  - This makes it exponentially more difficult to find and fix problems.
+  - Such integration problems can easily knock a project off-schedule, or cause it to fail altogether.
+  - The difference between continuous deployment and continuous delivery is that in continuous delivery, the package is not pushed to a production environment without manual intervention.
+
+![redhat_continuous_integration](diagrams/redhat_continuous_integration.png)
+
+&nbsp;
+
+![ci_cd](diagrams/ci_cd.png)
+
+- **DevOps**
+  - Simply put, it is the breakdown of the barrier between Development and Operations.
+  - **Deployment:** Responsible for writing production ready code
+  - **Operations:** Responsible for delivering and maintaining the code deployed in a production environment
+- **DevSecOps**
+  - Some of the basics from the SDLC still apply
+    - Threat modeling, abuse cases, code review, secure config, WAF...
+  - Tools can be slow especially Static Analysis
+    - Try to reduce the size of the code being scanned. Large code base means long scan times.
+  - Fast feedback loop from production
+    - Ensure that you have a means to deliver vulnerability or defect information quickly to the right development team(s)
+  - Patching
+    - Have a means for delivering patches quickly (following the DevOps principles)
+
+![devsecops](diagrams/devsecops.png)
+
+- Test early and often:
+  - **Small:** Unit Test
+    - Function level
+    - Input and Output is expected
+  - **Medium:** Integration Tests
+    - Function that has external dependencies
+  - **Large:** System Tests
+    - Critical components only
+    - Tackle the API's leave the UI untested
+  - **Manual validation**
+    - Every commit or just exploratory testing
+
+![bottom_line](diagrams/bottom_line.png)
+
+- Use Case
+  - A **misuse case highlights** something that should not happen (i.e. a Negative Scenario) and the threats hence identified, help in defining new requirements, which are expressed as new Use Cases.
+  - An **abuse case** is a type of complete interaction between a system and one or more actors, where the results of the interaction are harmful to the system, one of the actors, or one of the stakeholders in the system.
+
+![abuse_case](diagrams/abuse_case.png)
 
 &nbsp;
 
