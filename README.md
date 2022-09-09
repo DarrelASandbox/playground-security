@@ -13,6 +13,13 @@
       </ol>
     <li><a href="#defenses-and-tools">Defenses and Tools</a></li>
     <li><a href="#session-management">Session Management</a></li>
+    <li><a href="#risk-rating">Risk Rating</a></li>
+    <li><a href="#threat-modeling">Threat Modeling</a></li>
+      <ol>
+        <li><a href="#threat-models-manual-vs-tool">Threat Models (Manual VS Tool)</a></li>
+        <li><a href="#retail-store-user-stories">Retail Store User Stories</a></li>
+        <li><a href="#microsoft-threat-model-tool">Microsoft Threat Model Tool</a></li>
+      </ol>
   </ol>
 </details>
 
@@ -57,7 +64,7 @@
     - Business Process
     - Business Rules
     - Software Design
-    - Specifiction
+    - Specification
   - **Output**
     - Deliverable Code
 - **Testing**
@@ -174,7 +181,7 @@
 
 ### OWASP VS SANS
 
-- In developing their Top 25 list, CWE/SANS included a comparision to the OWASP Top Ten making a clear statement of the importance of OWASP's list while also recognizing distinct differences between the two
+- In developing their Top 25 list, CWE/SANS included a comparison to the OWASP Top Ten making a clear statement of the importance of OWASP's list while also recognizing distinct differences between the two
 - Most clearly defined is that the OWASP Top Ten deals strictly with vulnerabilities found in web applications where the Top 25 deals with weaknesses found in desktop and server applications as well
 - A further contrast is seen in how the list is compiled. OWASP giving more credence to the risk each vulnerability presents as opposed to the CWE/SANS Top 25 that included the prevalence of each weakness.
 - This factor is what gives Cross-site scripting the edge in the Top 25 as it is ranked number 1 while OWASP has it ranked at number 2
@@ -190,7 +197,7 @@
 - **Confidentiality:** Concept of preventing the disclosure of information to unauthorized parties
 - **Integrity:** Refers to protecting the data from unauthorized alteration
 - **Availability:** Access to systems by authorized personnel can be expressed as the system's availability
-- **Authentiction:** Authentication is the process of determining the identity of a user
+- **Authentication:** Authentication is the process of determining the identity of a user
 - **Authorization:** Authorization is the process of applying access control rules to a user process, determining whether or not a particular user process can access an object
 - **Accounting (Audit):** Accounting is a means of measuring activity.
 - **Non-Repudiation:** Non-repudiation is the concept of preventing a subject from denying a previous action with an object in a system
@@ -222,13 +229,13 @@
   - A basis for evaluation among services, tools, and databases
   - Industry-endorse via the CVE Numbering Authorities, CVE Board, and numerous products and services that include CV
   - [CVE List Home](https://cve.mitre.org/cve/)
-- **Common Vulnerability Scoring System (CVSS)** provides a way to capture the principal characteristics os a vulnerability and produce a numberical score reflecting its severity. The numerical score can then be translated into a qualitative representation (such as low, medium, high, and critical) to help organiations properly assess and prioritize their vulnerability management processes
+- **Common Vulnerability Scoring System (CVSS)** provides a way to capture the principal characteristics os a vulnerability and produce a numerical score reflecting its severity. The numerical score can then be translated into a qualitative representation (such as low, medium, high, and critical) to help organizations properly assess and prioritize their vulnerability management processes
   - [National Vulnerability Database](https://nvd.nist.gov/vuln-metrics/cvss)
 - **Common Weakness Enumeration (CWE)** is a community-developed list of common software security weaknesses. It serves as a common language, a measuring stick for software security tools, and as a baseline for weakness identification, mitigation, and prevention efforts
   - At is core, CWE is a list of software weaknesses types
   - Three types:
     - **Research:** This view is intended to facilitate research into weaknesses, including their inter-dependencies and their role in vulnerabilities
-    - **Development:** This view organizes weaknesses aroun concepts that are frequently used or encountered in software development
+    - **Development:** This view organizes weaknesses around concepts that are frequently used or encountered in software development
     - **Architecture:** This view organizes weaknesses according to common architectural security tactics
   - [Common Weakness Enumeration (CWE)](https://cwe.mitre.org/)
 
@@ -260,15 +267,15 @@
     - Enforces policy such that users cannot act outside of their intended permissions
     - Failures typically lead to unauthorized information disclosure, modification or destruction of all data, or performing a business function outside of the limits of the user.
     - Weaknesses are common due to the lack of automated detection, and lack of effective functional testing by application developers.
-    - The technical impact is attackers acting as users or administrators, or users using privileged funcitons, or creeating, accessing, updating or deleting every record.
+    - The technical impact is attackers acting as users or administrators, or users using privileged functions, or creating, accessing, updating or deleting every record.
 - **A02 Cryptographic Failures**
   - **Data Protection**
     - **Protected Health Information (PHI)**
       - Names, dates, phone/ fax numbers, email, SSN, MRN, account numbers, biometric (finger, retinal, voice prints) & images
     - **Personally Identifiable Information (PII)**
       - Name, address, passport, vehicle information, drivers license, credit card numbers, digital identity, birthplace, genetic information and login name
-    - **Sensitive Financial Infnormation**
-      - Credit/ Debit card numbers and security codes, account numbers, loan agreements, loan details, tax ID & PoS tansactions
+    - **Sensitive Financial Information**
+      - Credit/ Debit card numbers and security codes, account numbers, loan agreements, loan details, tax ID & PoS transactions
 - **A03 Injection**
   - **Other Injection Flaws**
     - **OS Command**
@@ -287,15 +294,15 @@
   - Default settings in the cloud
   - A cloud service provider (CSP) has default sharing permissions open to the Internet by other CSP users. This allows sensitive data stored within cloud storage to be accessed.
 - **A06 Vulnerable and Outdated Components**
-  - Most applicaions include either commercial products or Open Source Software(OSS) within their software bundles.
+  - Most applications include either commercial products or Open Source Software(OSS) within their software bundles.
     - Find a solution like **Dependency Check**, GitLab, or Jfrog Xray, to automatically scan for vulnerable packages.
   - For commercial products, most major vendors such as Oracle, Google and IBM provide **Security Bulletins to distribution lists** for notification purposes. Make sure you are signed up for these services.
     - [Sign-up](https://nvd.nist.gov/general/email-list) for regular security bullets from the National Vulnerability Database and regularly monitor components for security issues and updated versions.
   - **Notification**
-    - Have means for receiving notifications on ptentially vulnerable software.
+    - Have means for receiving notifications on potentially vulnerable software.
     - Many vendors like Microsoft already offer a notification service, however other services or feeds exist.
     - Receiving notification is only part of the solution. You must also be able to:
-      - Know where to patch (what systems or software arre vulnerable)
+      - Know where to patch (what systems or software are vulnerable)
       - Have the ability to test the new patch
       - Have a means to deliver the patch
       - Ability to notify those impacted by the changes to teh system (users, customers, etc)
@@ -307,7 +314,7 @@
     - Password guessing attack (social engineering)
       - John from IT, needs your help
     - Dictionary attack
-      - Dictionary words that are hased and tests
+      - Dictionary words that are hashed and tests
     - Brute force attack
       - Guessing or targeted hashes
     - Username enumeration
@@ -356,7 +363,7 @@
   - [MDN - CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
   - Is an added layer of security that helps to detect and mitigate certain types of attacks, including XSS and data injection attacks.
   - To enable CSP, you need to configure your web server to return the Content-Security-Policy HTTP header.
-  - Browsers that don't support it still work with servers that implement it, and vice-versa: browsers that don't support CSP simply ignore it, functioning as usual, defaulting to the standard same-orign policy for web content.
+  - Browsers that don't support it still work with servers that implement it, and vice-versa: browsers that don't support CSP simply ignore it, functioning as usual, defaulting to the standard same-origin policy for web content.
   - **Mitigating XSS**
     - CSP makes it possible for server administrators to reduce or eliminate the vectors by which XSS can occur by specifying the domains that the browser should consider to be valid sources of executable scripts.
     - A CSP compatible browser will then only execute scripts loaded in source files received from those whitelisted domains, ignoring all other script (including inline scripts and event-handling HTML attributes).
@@ -392,9 +399,9 @@
     - Use Case Models
     - Assurance Models
 - **Software Composition Analysis(SCA)**
-  - SCA is the process of validating that the components, libraries, and opensource software that is used in an application is free from known vulnerabilities and license compliance.
+  - SCA is the process of validating that the components, libraries, and open source software that is used in an application is free from known vulnerabilities and license compliance.
   - These external software components can come from several places:
-    - Downloads, commercial applications, third-aprty libraries and software, and from outsourced development by consulting
+    - Downloads, commercial applications, third-party libraries and software, and from outsourced development by consulting
   - SCA can provide:
     - Component tracking and inventory
     - Vulnerability identification and remediation recommendation
@@ -448,7 +455,7 @@
       - Does an insider use the interface directly?
     - **Value of Loss:**
       - How much could be lost if the module has a vulnerability introduced?
-      - Does the module contain some critical passsword hashing mechanism, or a simple change to HTML border on some internal test tool?
+      - Does the module contain some critical password hashing mechanism, or a simple change to HTML border on some internal test tool?
     - **Regulatory Controls:**
       - If a piece of code implements business logic associated with a standard that must be complied with, then these modules can be considered high risk as the penalties for non-conformity can be high.
     - When considering the risk of code under review, consider some common criteria for establishing risk of a particular code module. The higher the risk, the more thorough the review should be.
@@ -462,7 +469,7 @@
     - Company standards, guidelines and requirements that apply
     - The reviewer will need certain information about the development in order to be effective.
       - Design documents, business requirements, functional specifications, test results, and the like.
-    - If the reviwer is not part of the development team, they need to talk wit the developers and the lead architect for the application and get a sense of the application.
+    - If the reviewer is not part of the development team, they need to talk wit the developers and the lead architect for the application and get a sense of the application.
       - Does not have to be a long meeting, it could be a whiteboard session for the development team to share some basic information about the key security considerations and controls
   - **Information gathering tips**
     - Walkthrough of the actual running application.
@@ -472,14 +479,14 @@
     - All the required information of the proposed design including flow charts, sequence diagrams, class diagrams and requirements documents to understand the objective of the proposed design should be used as reference during the review.
   - **Using the checklist**
     - When using the Code Review Checklist Template, the reviewer may filter out non-applicable categories.
-    - It is recommneded that the complete list is used for code that is high risk. For instance, code that impacts patient safety workflows or mission critical functionality shall use the complete code review list.
+    - It is recommended that the complete list is used for code that is high risk. For instance, code that impacts patient safety workflows or mission critical functionality shall use the complete code review list.
     - The code review template should be completed and appended during code check-in in the code repository or with the completed code review using a tool (for instance Crucible).
-  - **When to peform the review**
+  - **When to perform the review**
     - **Code:** Code review during pre-commit means that dangerous or sub-par code does not make it to the code branch. However this does reduce the time to delivery of new code.
     - **Post:** Post-commit allows for faster delivery of software but runs the risk of allowing dangerous code into the branch. Other developers may also add their code which can make future reviews more cumbersome.
     - **Audit:** During a code audit can be triggered by an even such as a found vulnerability and should review the entire area of concern rather than focus on a single code commit.
   - **What to do with results**
-    - A vulnerability or risk found during a code review should be addressed immediately if found in the pre-commit phase, however there may be cases when code cannot be mitigated, or issues are found after code has been committed. In those cases, go through a Risk Rating to determine its impact and understand the timeframe for remediation.
+    - A vulnerability or risk found during a code review should be addressed immediately if found in the pre-commit phase, however there may be cases when code cannot be mitigated, or issues are found after code has been committed. In those cases, go through a Risk Rating to determine its impact and understand the time frame for remediation.
 - [OWASP Secure Coding Dojo](https://owasp.org/www-project-secure-coding-dojo/)
 - [OWASP Code Review Guide](https://owasp.org/www-project-code-review-guide/)
 
@@ -491,11 +498,11 @@
 
 ## Session Management
 
-- **Sessions** ensures the ability to identify the user on any subsequent requests as well as being able to apply security access controls, authorized access to the user private data, and to increase the usability of the applicaton. Therefore, current web applications can provide session capabilities both pre and post authntication. Once an authenticated session has been established, the session ID (or token) is temporarily equivalent to the strongest authentication method used by the application.
-  - Such as username and password, passphrases, one-time passwords (OTP), client-based digital certificates, smartcards, or biometrics (such as figngerprint or eye retina).
+- **Sessions** ensures the ability to identify the user on any subsequent requests as well as being able to apply security access controls, authorized access to the user private data, and to increase the usability of the application. Therefore, current web applications can provide session capabilities both pre and post authentication. Once an authenticated session has been established, the session ID (or token) is temporarily equivalent to the strongest authentication method used by the application.
+  - Such as username and password, passphrases, one-time passwords (OTP), client-based digital certificates, smart cards, or biometrics (such as fingerprint or eye retina).
 - **HTTP** is a stateless protocol where each request and response pair is independent of other web interactions.
-- Session management links both the authentication and authorization modules commonly avilable in web applications:
-  - The **session ID** or **token binds** the user authentication credentials to the user HTTP traffic and the appropraite access controls enforced by the web application.
+- Session management links both the authentication and authorization modules commonly available in web applications:
+  - The **session ID** or **token binds** the user authentication credentials to the user HTTP traffic and the appropriate access controls enforced by the web application.
   - The complexity of these components in modern web applications, plus the fact that its implementation and binding resides on the web developer's hands makes the implementation of a secure session management module very challenging.
 - **Pre-Auth Sessions -> Authentication -> Session Management -> Access Control -> Session Finalization**
 - Since HTTP and Web Server both are **stateless**, the only way to maintain a session is when some unique information about the session (session id) is passed between server and client in very request and response.
@@ -508,7 +515,7 @@
 &nbsp;
 
 - **Federated Identity**
-  - A federated identity in information technology is the means of linking a person's electronic identity and attributes, stored across multiple distinct **identity mangement** systems.
+  - A federated identity in information technology is the means of linking a person's electronic identity and attributes, stored across multiple distinct **identity management** systems.
   - [Federated identity is related to single sign-on (SSO)](https://doubleoctopus.com/blog/standards-regulations/federated-identity-vs-single-sign-on/), in which a user's single authentication ticket, or token, is trusted across multiple IT systems or even organizations.
   - The "federation" of identity, describes the technologies, standards and use-cases which serve to enable the portability of identity information across otherwise autonomous security domains.
   - Technologies:
@@ -531,7 +538,7 @@
 >
 > Also, Raymond Chen also mentioned [that](devblogs.microsoft.com/oldnewthing/20150701-00/?p=45241), as a rule of thumb, GUIDs are for uniqueness, not for randomness.
 
-> **Derek:** Depending on your use case a GUID is still considered sufficient. You may also generate your GUIDs using v4 GUID algorithm, and a cryptograpically secure psuedo random number generator. In any case, it's important to understand what your user case is and level of risk tolerance is in order to determine your best path forward. Hope that helps.
+> **Derek:** Depending on your use case a GUID is still considered sufficient. You may also generate your GUIDs using v4 GUID algorithm, and a cryptographically secure pseudo random number generator. In any case, it's important to understand what your user case is and level of risk tolerance is in order to determine your best path forward. Hope that helps.
 
 &nbsp;
 
@@ -539,11 +546,11 @@
 
 &nbsp;
 
-- **Java Session Management = HTTPSESSION**
+- **Java Session Management = HttpSession**
   - Servlet API provides Session management through HttpSession interface. We can get session from HttpServletRequest object using following methods. HttpSession allows us to set objects as attributes that can be retrieved in future requests.
-    - `HttpSession getSesssion()`
+    - `HttpSession getSession()`
     - `HttpSession getSession(boolean flag)`
-  - When `HttpServletRequest getSession()` does not return an active session, then it creates the new HttpSession object and adds a Cookie to the response object with name JSESSIONID and value as session id.
+  - When `HttpServletRequest getSession()` does not return an active session, then it creates the new HttpSession object and adds a Cookie to the response object with name `JSESSIONID` and value as session id.
   - This cookie is used to identify the HttpSession object in further requests from client.
   - There may be times where the browser has cookies disabled.
   - The application may choose to pass session information in the URL
@@ -555,8 +562,8 @@
 
 - **.NET Sessions**
   - **.Net Session Management**
-    - .NET session state supports several different storage options for session data. Each option is identified by a value in the `SessionStateMode` enumeration. The following list describes the avaialble session state modes:
-    - You can specify which mode you want .NET session state to use by assigning a `SessionStateMode` enumeration values to the `mode` attribute of the sessionState element in your application's `Web.config` file. Modes other than `InProc` and `Off` require additonal parameters, such as connetion-string values.
+    - .NET session state supports several different storage options for session data. Each option is identified by a value in the `SessionStateMode` enumeration. The following list describes the available session state modes:
+    - You can specify which mode you want .NET session state to use by assigning a `SessionStateMode` enumeration values to the `mode` attribute of the sessionState element in your application's `Web.config` file. Modes other than `InProc` and `Off` require additional parameters, such as connection-string values.
     - `Custom`
     - `InProc`
     - `Off`
@@ -576,9 +583,278 @@
   - OpenID Connect 1.0 is a simple identity layer on top of the OAuth 2.0 protocol.
   - It allows Clients to verify the identity of the End-User based on the authentication performed by an Authorization Server, as well as to obtain basic profile information about the End-User in an interoperable and REST-like manner.
   - OpenID Connect allows clients of all types, including Web-based, mobile, and JavaScript clients, to request and receive information about authenticated sessions and end-users.
-  - The specification suite is extensible, allowing participants to use optional features such as encryption of identity data, discovery of OpenID Providers, and session mangement, when it makes sense for them.
+  - The specification suite is extensible, allowing participants to use optional features such as encryption of identity data, discovery of OpenID Providers, and session management, when it makes sense for them.
 
 ![openid_connect_flow](/diagrams/openid_connect_flow.png)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## Risk Rating
+
+- [OWASP Risk Rating Methodology](https://owasp.org/www-community/OWASP_Risk_Rating_Methodology)
+  - Risk = Likelihood \* Impact
+- [SP 800-30 Rev. 1: Guide for Conducting Risk Assessments](https://csrc.nist.gov/publications/detail/sp/800-30/rev-1/final)
+- [Harmonized TRA Methodology (TRA-1)](https://cyber.gc.ca/en/tools-services/harmonized-tra-methodology)
+- [Rapid Risk Assessment](https://infosec.mozilla.org/guidelines/risk/rapid_risk_assessment.html)
+- **When and why do we risk rate**
+  - Risk Rating should be completed when there is a finding from a review of the application architecture/ design from threat modeling, through a code review, or a penetration test.
+  - The goal of risk rating is to identify the risk to the system and business in order to put a plan in place to address the risk through prioritization.
+- **Risk rating method**
+  - **Identify a risk:**
+    - The first step is to identify a security risk that needs to be rated. The tester needs to gather information about the threat agent involved, the attack that will be used, the vulnerability involved, and the impact of a successful exploit on the business.
+  - **Factors for estimating likelihood:**
+    - Once the tester has identified a potential risk and wants to figure out how serious it is, the first step is to estimate the "likelihood". At the highest level, this is a rough measure of how likely this vulnerability is to be uncovered and exploited by an attacker.
+    - Here you are using the **Threat Agent Factors** and **Vulnerability Factors**
+    - **Factors**
+      - **Threat agent:** The goal here is to estimate the likelihood of a successful attack by this group of threat agents. Use the worst-case threat agent.
+        - **Skill Level:** How technically skilled is this group of threat agents?
+        - **Motive:** How motivated is this group of threat agents to find and exploit this vulnerability?
+        - **Opportunity:** What resources and opportunities are required for this group of threat agents to find and exploit this vulnerability?
+        - **Size:** How large is this group of threat agents?
+      - **Vulnerability:** The goal here is to estimate the likelihood of the particular vulnerability involved being discovered and exploited. Assume the threat agent selected above.
+        - **Ease of Discovery:** How easy is it for this group of threat agents to discover this vulnerability?
+        - **Ease of Exploit:** How easy is it for this group of threat agents to actually exploit this vulnerability?
+        - **Awareness:** How well known is this vulnerability to this group of threat agents?
+        - **Intrusion Detection:** How likely is an exploit to be detected?
+  - **Factors for estimating impact:**
+    - When considering the impact of a successful attack, it's important to realize that there are two kinds of impacts.
+    - The first is the **"technical impact** on the application, the data it uses, and the functions it provides.
+      - The goal is to estimate the magnitude of the impact **on the system** if the vulnerability were to be exploited.
+      - **Confidentiality:** How much data could be disclosed and how sensitive is it?
+      - **Integrity:** How much data could be corrupted and how damaged is it?
+      - **Availability:** How much service could be lost and how vital is it?
+      - **Accountability:** Are the threat agents' actions traceable to an individual?
+    - The other is the **"business impact"** on the business and company operating the application.
+      - Stems from the technical impact but requires a deep understanding of **what is important to the company running the application.**
+      - In general, you should be aiming to support your risks with business impact, particularly if your audience is executive level.
+      - The business risk is what justifies investment in fixing security problems.
+      - **Financial damage:** How much financial damage will result from an exploit?
+      - **Reputation damage:** would an exploit result in reputation damage that would harm the business?
+      - **Non-compliance:** How much exposure does non-compliance introduce?
+      - **Privacy violation:** How much personally identifiable information could be disclosed?
+  - **Determine severity of the risk:**
+    - In this step the likelihood estimate and the impact estimate are put together to calculate an overall severity for this risk.
+    - This is done by figuring out whether the likelihood is low, medium, or high and then do the same for impact.
+      - **Informal:** In many environments, there is nothing wrong with reviewing the factors and simply capturing the answers. The tester should think through the factors and identify the key "driving" factors that are controlling the result.
+      - **Repeatable:** If it is necessary to defend the ratings or make them repeatable, then it is necessary to go through a more formal process of rating the factors and calculating the result.
+  - **Deciding what to fix:**
+    - After the risks to the application have been classified there will be a prioritized list of what to fix. As a general rule, the most sever risks should be fixed first.It simply doesn't help the overall risk profile to fix less important risks, even if they're easy or cheap to fix.
+    - Remember that not all risks are worth fixing, and some loss is not only expected, but justifiable based upon the cost of fixing the issue. For example, if it would cost $100,000 to implement controls to stem $2,000 of fraud per year, it would take 50 years return on investment to stamp out the loss. But remember there may be reputation damage from the fraud that could cost the organization much more.
+
+![determine_severity_of_the_risk1](/diagrams/determine_severity_of_the_risk1.png)
+
+&nbsp;
+
+![determine_severity_of_the_risk2](/diagrams/determine_severity_of_the_risk2.png)
+
+- **Handling Risk**
+  - **Accept:** Document the risk, acknowledge it and assign ownership.
+  - **Avoid:** Place other controls that will reduce or eliminate the risk.
+  - **Mitigate:** Fix the issue that exposes you to risk.
+  - **Transfer:** If you are practically unable to deal with a risk, you may contractually obligate someone else to accept the risk.
+  - When the risk level is very high and probability is significant but the effort and cost are also high, do not make decisions that are above your pay grade. Let executives make executive decisions and bear the consequences ofo those decisions. Clearly communicate the risks and don't sugarcoat it.
+
+|             Threat Target              |                                  Mitigation Strategy                                  |                                                         Mitigation Technique                                                          |
+| :------------------------------------: | :-----------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------: |
+|           Spoofing a person            | Identification and authentication <br/> (usernames and something you know/ have/ are) | Usernames, real names, or other identifiers <br/> such as passwords, tokens or biometrics <br/> <br/> Enrollment/ maintenance/ expiry |
+| No logs means you can't prove anything |                                          Log                                          |                                         Be sure to log all the security-relevant information                                          |
+|     Tampering with network packets     |                                     Cryptographic                                     |                                                        HTTPS/ SSL <br/> IPsec                                                         |
+
+![which_strategy_to_use](diagrams/which_strategy_to_use.png)
+
+- [Demo using OWASP Risk Assessment Calculator](https://www.security-net.biz/files/owaspriskcalc.html)
+  - My Health Records is a SaaS application that provides a user the ability to view their medical records from multiple sources (Like an HIE).
+  - Functional Description:
+    - User must authenticate using a username/ password
+    - The application only allows view rights, not updating of medical information
+    - User can access the application from multiple devices as long as it has a browser
+    - Document Viewer allows for search of medical records using date ranges, keywords and encounter location
+    - User can print documents
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## Threat Modeling
+
+- **As humans we are naturally inclined to make immediate decisions based upon a feeling.**
+- **Threats:**
+  - Is a means by which an abuser might compromise an asset that has potential for success.
+  - Can include everything from hackers and malware, from earthquakes to wars.
+  - Intention is not a factor when considering threats, thus the mechanical failure of a typical platter hard drive is a threat as is a coordinated attack by attacker.
+- **Hazard**
+  - Is a potential source of harm or danger.
+  - A harmless state with potential to change into a threat.
+  - A **threat** is a specific type of hazard involving an **abuser** potentially harming an asset.
+  - In a harmful state
+  - Tree hazards include dead or dying trees, dead parts of live trees, or unstable live trees that are within striking distance of people or property (a target). Hazard trees have the potential to cause property damage, personal injury or fatality in the event of a failure.
+- **Risk**
+  - The potential for loss, damage or destruction of an asset asa a result of a threat exploiting a vulnerability.
+  - Based on the previous example, mechanical failure of a hard drive is probably more likely than an attack by an attacker, but the overall impact might be significantly lower thus making it less risky.
+- **Scope**
+  - Common phrases that distract (these should still be identified in the threat model):
+    - "Well, the attacker would need to be on the internal network."
+    - "That is only exploitable under this condition."
+  - If you have questions you can't answer right now, don't get blocked. Concentrate on what you know. document what you don't know to find out later.
+  - Document any assumptions you make and follow up on them later.
+- **Assumptions**
+  - You shouldn't assume you have a secure environment
+  - You shouldn't assume that compute, network, or storage resources are reliable.
+    - Can an application successfully survive loss of storage, network outages, etc., and stay healthy?
+  - But when threat modeling we shouldn't assume that your environment is correctly configured.
+- **Defense In Depth**
+  - The principle of Defense In Depth is that layered security mechanisms increase security of the system as a whole.
+  - In theory in Defense In Depth you never make a tradeoff between performance and security but in reality you do, and in order to properly calculate those choices you need the full context of your stack.
+
+![defense-in-depth-castle](diagrams/defense-in-depth-castle.png)
+
+- **Benefits**
+  - Better understanding of the architecture
+  - Crete reusable architecture models
+  - Inputs into:
+    - Penetration Testing
+    - Scanning
+    - Code Reviews
+    - Risk Management
+
+&nbsp;
+
+---
+
+&nbsp;
+
+### Threat Models (Manual VS Tool)
+
+|                                Manual                                |                                            Tool                                            |
+| :------------------------------------------------------------------: | :----------------------------------------------------------------------------------------: |
+|        More favorable in terms of quality and custom-ability         |                          Can lead to a "check the box mentality"                           |
+| Just need a whiteboard, group of experts on the product and security | Not always consensus on the tool <br/> (Wiki, PPT, Visio, architecture tool, or a TM tool) |
+|                             Not scalable                             |                                       More scalable                                        |
+
+- **Types**
+  - OCTAVE (Operational Critical Threat Asset and Vulnerability Evaluation)
+  - PASTA (Process for Attack Simulation and Threat Analysis) - Business Impact
+  - STRIDE - Technical Impact
+    - Spoofing
+    - Tampering
+    - Repudiation
+    - Information disclosure (privacy breach or data leak)
+    - Denial of service
+    - Elevation of privilege
+- **Manual Threat Modeling**
+  - Best done in groups
+    - Implementation expert (an architect)
+    - Solution designer
+    - Implementation team
+    - Security SME
+    - Manageable size of 6 to 8 people
+  - Who is the audience?
+    - **Your team:** The threat model becomes a reference for understanding the security of your solution, and therefore is like system level tech design.
+    - **Other teams:** Other teams may rely on your components to understand their own security. Threat models should reference related threat models.
+    - **Pen testers:** This is a map to potentially hacking the application.
+    - **Clients:** Your clients may ask to see if you are considering security. You would most likely hand over a high level and not a raw threat model.
+- **Threat Modeling Mindset**
+  - What are you building?
+    - What is the scope?
+    - What do you own?
+  - What can go wrong?
+    - Realistic
+  - What should you do about those things that can go wrong?
+    - Mitigation
+    - Counter Measures
+  - Did you do a decent job of analysis?
+    - Retrospective. Did you capture all the points?
+- **Threat model is a living artifact expected to change and grow over time. A complex system is never truly complete.**
+
+![threat-model-sample-board](diagrams/threat-model-sample-board.png)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+### Retail Store User Stories
+
+- Back office management of the store
+  - Staff needs to view/ modify inventory on system with national inventory management
+  - Management needs to be able to create staff schedule on network system
+- Payment system (POS) for purchases
+  - Staff needs tto be able to check-out a customer
+  - Customer needs to be able to pay with phone, card & cash
+- Kiosk's in the store for customers to lookup or scan items
+  - Customer needs to be able to see item price using in store kiosk
+- Remote management of the lighting, heating/ cooling, and water systems
+  - Joe's HVAC needs to be able to remotely manage the HVAC system
+  - Store Management needs to be able to remotely manage the HVAC system
+- CCTV (surveillance system)
+  - Store Management needs to be able to remotely view CCTV feed
+  - Store Loss Prevention needs to be able to remotely view CCTV feed
+
+![retail-store-architecture](diagrams/retail-store-architecture.png)
+
+- Components of the system
+  - Customer, store and 3<sup>rd</sup> party devices?
+  - Who interacts?
+  - External entities?
+  - Who has access?
+  - HVAC, Repair, Security & Cleaners
+  - Staff
+  - Customers
+- The **who** should cover not just the threat actors, but the users of the system.
+- The **why** should cover the motivation that the identified "who" would have for misusing/ abusing the system.
+- The **what** should identify what can be stolen, broken, or misused/ abused in the system.
+- The **how** needs to be practical examples of how the system can be misused/ abused.
+- **Impact/ Counter:** What is the risk and how do we counter it
+
+&nbsp;
+
+---
+
+&nbsp;
+
+### Microsoft Threat Model Tool
+
+- **Step 1: Decompose the application**
+  - Scope
+    - This is a combination of a workflow diagram and an architecture diagram
+    - Boils down a workflow to something as small as you can
+    - The purpose of scoping small is to concentrate on a small part of the system so you can get to the end of the threat modeling process
+    - For a reasonably complex system, you would otherwise never reach the end
+  - Actors/ Abusers
+  - System components (e.g. databases, mail servers, etc.)
+  - Process and data flows (e.g., cookies, tokens, etc.)
+  - Backups, monitoring, logging, etc.
+- **Step 2: Create the diagram**
+  - The diagram must help you understand and discuss system security considerations
+  - The diagram should contain the items determined in step 1.
+  - It is okay if you missed things you can always go back and break things down further or remove items as you gain a better view of the system
+
+![simple-webapp-threat-model](diagrams/simple-webapp-threat-model.png)
+
+- Accounts (UIDs on unix systems, or SIDS on Windows) Network interfaces
+- Different physical computers
+- Virtual machines
+- Organizational boundaries
+- Almost anywhere you can argue for different privileges
+
+&nbsp;
+
+- **Step 3: Identify and analyze threats**
+  - What can go wrong?
+  - Classifying threats using STRIDE
+  - Getting Started:
+    - If you're not sure where to start, start with the external entities or events which drive activity.
+    - Wherever you choose to begin, you want to aspire to some level of organization.
+    - You could also go in "STRIDE order" through the diagram.
+    - Without some organization, it's hard to tell when you're done, but be careful not to add so much structure that you stifle creativity.
+- **Step 4: [Microsoft Threat Modeling Tool](https://docs.microsoft.com/en-us/azure/security/develop/threat-modeling-tool)**
 
 &nbsp;
 
