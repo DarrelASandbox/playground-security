@@ -25,6 +25,7 @@
     <li><a href="#public-key-infrastructure-pki">Public Key Infrastructure (PKI)</a></li>
     <li><a href="#password-handling">Password Handling</a></li>
     <li><a href="#frameworks-and-process">Frameworks and Process</a></li>
+    <li><a href="#security-scanning-and-testing">Security Scanning and Testing</a></li>
   </ol>
 </details>
 
@@ -1077,6 +1078,72 @@
   - An **abuse case** is a type of complete interaction between a system and one or more actors, where the results of the interaction are harmful to the system, one of the actors, or one of the stakeholders in the system.
 
 ![abuse_case](diagrams/abuse_case.png)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## Security Scanning and Testing
+
+- **General Guidance**
+  - Most enterprises use many (even all) of the techniques outlined here
+  - Not each solution is a silver bullet
+  - Many solutions are platform or language dependent
+    - This means that if you are using multiple platform or languages you will need more than one tool (very few enterprises are monolithic)
+  - Results are different in each solution and there are many false positives
+  - You may be mandated by your environment to run tools
+    - Government, financial, healthcare, etc...
+  - Every vendor will tell you their solution fits your needs
+    - They tell you your problem, then sell you their solution
+- **False positive:** Tools that claim there is a password in clear text when it simply found the word "password" in the code.
+- **False negative:** A SQL injection vulnerability that is not identified by a scanning tool.
+- **Static Application Security Testing (SAST)**
+- **Static Analysis**
+  - [SpotBugs](https://spotbugs.github.io/)
+- **Tain Analysis**
+- **Lexical Analysis**
+
+![sast_process_aspect_security](diagrams/sast_process_aspect_security.png)
+
+- **Dynamic Application Security Testing (DAST)**
+- **Interactive Application Security Testing (IAST)**
+- **Runtime Application Self-Protection (RASP)**
+- **Web Application Firewall (WAF)**
+  - **Transparent bridge:** It inspects only the traffic that is configured for inspection while bridging all other traffic. Bridge mode deployment can be achieved with no changes to the network configuration of the upstream devices or web servers.
+  - **Reverse proxy:** Deployments accept traffic on the virtual IP address and proxy the traffic to the back-end server network behind the WAF.
+  - **Strength:**
+    - Can be in blocking or reporting mode
+    - Can be independent of the application
+    - Can block the following:
+      - Cross-site Scripting (XSS)
+      - SQL injection
+      - Cookie poisoning
+      - Unvalidated input
+      - DoS
+      - Web scraping
+  - **Weakness**
+    - Potential performance issues
+    - Not actually solving the problems
+    - Can't protect against every security issue
+  - **Types**
+    - **Network Based**
+      - Pro: **Low network latency** since they're connected directly to the web servers.
+      - Con: Higher cost and tougher management across large DCs.
+    - **Host Based**
+      - Pro: Affordable. No network latency.
+      - Con: Agents. Engineering costs/ time. Can create complexity with application
+    - **Cloud Hosted**
+      - Pro: Cheapest. Auto update/ maintained. Quick to deploy.
+      - Con: High network latency. No ownership.
+- **Penetration Testing**
+  - **Types**
+    - **White box**
+    - **Black box**
+    - **Grey box**
+    - **Internal**
+    - **External**
 
 &nbsp;
 
