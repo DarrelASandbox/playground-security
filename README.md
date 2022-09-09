@@ -20,6 +20,10 @@
         <li><a href="#retail-store-user-stories">Retail Store User Stories</a></li>
         <li><a href="#microsoft-threat-model-tool">Microsoft Threat Model Tool</a></li>
       </ol>
+    <li><a href="#encryption">Encryption</a></li>
+    <li><a href="#hashing">Hashing</a></li>
+    <li><a href="#public-key-infrastructure-pki">Public Key Infrastructure (PKI)</a></li>
+    <li><a href="#password-handling">Password Handling</a></li>
   </ol>
 </details>
 
@@ -39,7 +43,7 @@
 
 ## Application Security Introduction
 
-![sdlc](/diagrams/sdlc.png)
+![sdlc](diagrams/sdlc.png)
 
 - **Requirements Analysis**
   - High level view of requirements and goals
@@ -239,14 +243,14 @@
     - **Architecture:** This view organizes weaknesses according to common architectural security tactics
   - [Common Weakness Enumeration (CWE)](https://cwe.mitre.org/)
 
-![defense-in-depth-example](/diagrams/defense-in-depth-example.png)
+![defense-in-depth-example](diagrams/defense-in-depth-example.png)
 
 - "**Defense In Depth** is an approach to cybersecurity in which a series of defensive mechanisms are layered in order to protect valuable data and information. If one mechanism fails, another steps up immediately to thwart an attack." -ForcePoint
   - Don't rely on Defense In Depth to always protect your app
   - Systems fail, they can be circumvented by the weakest link
   - Your app may not always be behind those defenses
 
-![proxy-tools](/diagrams/proxy-tools.png)
+![proxy-tools](diagrams/proxy-tools.png)
 
 - [Charles](https://www.charlesproxy.com/)
 - [Telerik Fiddler](https://www.telerik.com/fiddler)
@@ -336,11 +340,11 @@
 - **A09 Security Logging and Monitoring Failures**
   - Security Information and Event Management (SIEM)
 
-![siem-solution-purplesec](/diagrams/siem-solution-purplesec.png)
+![siem-solution-purplesec](diagrams/siem-solution-purplesec.png)
 
 - **A10 Server-Side Request Forgery (SSRF)**
 
-![ssrf-occurs-when-we-do-not](/diagrams/ssrf-occurs-when-we-do-not.png)
+![ssrf-occurs-when-we-do-not](diagrams/ssrf-occurs-when-we-do-not.png)
 
 &nbsp;
 
@@ -353,11 +357,11 @@
 - **Cross Site Scripting (XSS)** is a type of computer security vulnerability typically found in web applications. XSS enables attackers to inject client-side scripts into web pages viewed by other users. A cross-site scripting vulnerability may be used by attackers to bypass access controls such as the same-origin policy.
 - This subversion is possible because the wb application fails to properly validate input from the web browser (i.e., client) and/ or fails to properly escape that input in the response.
 
-![xss_reflected](/diagrams/xss_reflected.png)
+![xss_reflected](diagrams/xss_reflected.png)
 
 &nbsp;
 
-![xss_persistent](/diagrams/xss_persistent.png)
+![xss_persistent](diagrams/xss_persistent.png)
 
 - **Content Security Policy (CSP)**
   - [MDN - CSP](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
@@ -377,7 +381,7 @@
     - `Content-Security-Policy: default-src'none'; script-src'self'; connect-src 'self'; img-src 'self'; style-src 'self';`
   - [CSP Evaluator](https://csp-evaluator.withgoogle.com/)
 
-![security_models_os_design](/diagrams/security_models_os_design.png)
+![security_models_os_design](diagrams/security_models_os_design.png)
 
 - **Security Model** are used to understand the systems and processes developed to enforce security principles.
   - 3 key elements play a role in systems with respect to model implementation:
@@ -409,11 +413,11 @@
   - [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/)
   - [JFrog Xray](https://jfrog.com/xray/)
 
-![software_composition_analysis](/diagrams/software_composition_analysis.png)
+![software_composition_analysis](diagrams/software_composition_analysis.png)
 
 &nbsp;
 
-![dependency_check](/diagrams/dependency_check.png)
+![dependency_check](diagrams/dependency_check.png)
 
 &nbsp;
 
@@ -558,7 +562,7 @@
     - In a redirect the request to another resource can be encoded with `encodedRedirectURL()` method.
   - However, there is a clear security concern with the session in the URL
 
-![dot_net_session](/diagrams/dot_net_session.png)
+![dot_net_session](diagrams/dot_net_session.png)
 
 - **.NET Sessions**
   - **.Net Session Management**
@@ -585,7 +589,7 @@
   - OpenID Connect allows clients of all types, including Web-based, mobile, and JavaScript clients, to request and receive information about authenticated sessions and end-users.
   - The specification suite is extensible, allowing participants to use optional features such as encryption of identity data, discovery of OpenID Providers, and session management, when it makes sense for them.
 
-![openid_connect_flow](/diagrams/openid_connect_flow.png)
+![openid_connect_flow](diagrams/openid_connect_flow.png)
 
 &nbsp;
 
@@ -645,11 +649,11 @@
     - After the risks to the application have been classified there will be a prioritized list of what to fix. As a general rule, the most sever risks should be fixed first.It simply doesn't help the overall risk profile to fix less important risks, even if they're easy or cheap to fix.
     - Remember that not all risks are worth fixing, and some loss is not only expected, but justifiable based upon the cost of fixing the issue. For example, if it would cost $100,000 to implement controls to stem $2,000 of fraud per year, it would take 50 years return on investment to stamp out the loss. But remember there may be reputation damage from the fraud that could cost the organization much more.
 
-![determine_severity_of_the_risk1](/diagrams/determine_severity_of_the_risk1.png)
+![determine_severity_of_the_risk1](diagrams/determine_severity_of_the_risk1.png)
 
 &nbsp;
 
-![determine_severity_of_the_risk2](/diagrams/determine_severity_of_the_risk2.png)
+![determine_severity_of_the_risk2](diagrams/determine_severity_of_the_risk2.png)
 
 - **Handling Risk**
   - **Accept:** Document the risk, acknowledge it and assign ownership.
@@ -855,6 +859,131 @@
     - You could also go in "STRIDE order" through the diagram.
     - Without some organization, it's hard to tell when you're done, but be careful not to add so much structure that you stifle creativity.
 - **Step 4: [Microsoft Threat Modeling Tool](https://docs.microsoft.com/en-us/azure/security/develop/threat-modeling-tool)**
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## Encryption
+
+- **Symmetric Encryption:**
+  - Allows for encryption and decryption using the same key
+  - Use this for storing sensitive data in a database
+  - Types:
+    - AES
+    - Blowfish
+    - 3DES
+- **Asymmetric Encryption:**
+  - Allows for encryption and decryption as well as repudiation
+  - One key is used to encrypt and another key is used to decrypt data
+  - Verify that a message came from an individual using their private key
+  - Keys are generated together
+  - Public keys are freely distributed
+  - Private keys are kept secret and never handed out
+  - Private key is used for Encryption/ Decryption and Signing
+  - RSA
+- **Symmetric VS Asymmetric**
+  - Symmetric-key algorithms are generally significantly faster than asymmetric-key algorithms, and the keys are shorter in length for the same security strength; 256 bit vs 2048 bit
+  - Hybrid approach
+    - Asymmetric-key algorithms are used for the generation and verification of digital signatures and for key establishment
+    - Symmetric-key algorithms are used for all other purposes (e.g., encryption), especially those involving the protection of large amounts of data
+- **Encryption Use Cases:**
+  - HTTPS
+  - Signing
+  - Signing with security
+
+![encryption-https](diagrams/encryption-https.png)
+
+&nbsp;
+
+![encryption-signing](diagrams/encryption-signing.png)
+
+&nbsp;
+
+![encryption_signing_with_security](diagrams/encryption_signing_with_security.png)
+
+- **Key Management**
+  - The algorithms that encrypt the data are all the same, what makes it secure is the keys.
+  - As organizations use more encryption, they also end up with more keys, and more varieties of keys.
+  - In some companies, you might have millions of keys, And every day, you generate more keys and they have to be managed and controlled. If the bad guy gets access to the keys, he gets access to the data. And if the keys get lost, you can't access the data.
+  - Other factors that contributed to the pain were fragmented and isolated systems, lack of skilled staff, and inadequate management tools.
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## Hashing
+
+- **One way:** Not possible to reverse
+- **Collision Resistant:** Given an input and its hash, it should be hard to find a different input with the same hash.
+- **Salt:**
+  - Random data of fixed length
+  - Concatenated to input before hashing
+  - Unique for each input
+  - Used to make hashes unique and protect against brute force style attacks
+- **Hash Functions:**
+  - MD5
+  - SHA1, SHA2 & SHA3
+- **Hash Attacks**
+  - Hash Collision Attack
+  - Birthday Attack
+  - Brute Force
+  - Dictionary
+  - Rainbow Table
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## Public Key Infrastructure (PKI)
+
+- **Digital Certificate:** Identity and proof of key ownership
+- **Certification Authority (CA)**
+  - Certificate Authorities are the foundation of PKI
+  - Offloads the trust to a third party
+  - Relying parties can rely on signatures or assertions that correspond to the certificate being presented
+- **PKI** is a highly protected ecosystem that allows for businesses to issue trusted Digital Certificates
+  - There is a chain of trust in the issuing and root CA's and in many cases the root certificate is "offline" only used when cutting a certificate for an issuing CA. This protects the root.
+
+![public_key_infrastructure](diagrams/public_key_infrastructure.png)
+
+- **Certificate Signing Request (CSR)**
+  - Host creates a key pair - Private and Public key
+  - Host creates the CSR with information specific about the host (distinguished name, location, business name, etc...)
+  - Information about the host is hashed and signed creating a digital signature
+  - Public Key, CSR and Signature are sent to the CA for validation
+  - Information validated and a signed certificate is produced with CA private key
+  - Signed certificate is returned to host. This proves that the host owns the private key
+
+![certificate_signing_request](diagrams/certificate_signing_request.png)
+
+&nbsp;
+
+![pki_attack](diagrams/pki_attack.png)
+
+&nbsp;
+
+---
+
+&nbsp;
+
+## Password Handling
+
+- **Best Practices references:**
+  - [A07:2021 – Identification and Authentication Failures](https://owasp.org/Top10/A07_2021-Identification_and_Authentication_Failures/)
+  - [OWASP - Password Storage Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Password_Storage_Cheat_Sheet.html)
+- **Entropy:** A measure of the disorder of a system
+- **Password entropy:**
+  - Based on the character set used (which is expansible by using lowercase, uppercase, numbers as well as symbols) as well as password length.
+  - Predicts hwo difficult a given password would be to crack through guessing, brute force cracking, dictionary attacks or other common methods.
+  - Encryption creates randomness which cannot be compressed as well. For maximum efficiency you should compress before encrypting
+- [Kaspersky Password Checker](https://password.kaspersky.com/)
 
 &nbsp;
 
