@@ -1,11 +1,8 @@
-- [About The Project](#about-the-project)
-- [Hands-on activities](#hands-on-activities)
-- [Program overview](#program-overview)
-
 # About The Project
 
 - [Google Cybersecurity Professional Certificate](https://www.coursera.org/professional-certificates/google-cybersecurity)
 - [Foundations of Cybersecurity](https://www.coursera.org/learn/foundations-of-cybersecurity)
+- [Play It Safe: Manage Security Risks](https://www.coursera.org/learn/manage-security-risks)
 
 # Hands-on activities
 
