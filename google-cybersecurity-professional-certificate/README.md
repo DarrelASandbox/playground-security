@@ -3,6 +3,7 @@
 - [Google Cybersecurity Professional Certificate](https://www.coursera.org/professional-certificates/google-cybersecurity)
 - [Foundations of Cybersecurity](https://www.coursera.org/learn/foundations-of-cybersecurity)
 - [Play It Safe: Manage Security Risks](https://www.coursera.org/learn/manage-security-risks)
+- [Connect and Protect: Networks and Network Security](https://www.coursera.org/learn/networks-and-network-security/)
 
 # Hands-on activities
 
