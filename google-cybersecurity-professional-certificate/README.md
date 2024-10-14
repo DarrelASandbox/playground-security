@@ -6,6 +6,7 @@
 - [Connect and Protect: Networks and Network Security](https://www.coursera.org/learn/networks-and-network-security/)
 - [Tools of the Trade: Linux and SQL](https://www.coursera.org/learn/linux-and-sql/)
 - [Assets, Threats, and Vulnerabilities](https://www.coursera.org/learn/assets-threats-and-vulnerabilities)
+- [Sound the Alarm: Detection and Response](https://www.coursera.org/learn/detection-and-response)
 
 # Hands-on activities
 
