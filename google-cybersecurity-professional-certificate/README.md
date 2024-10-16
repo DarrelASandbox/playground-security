@@ -8,6 +8,7 @@
 5.  [Assets, Threats, and Vulnerabilities](https://www.coursera.org/learn/assets-threats-and-vulnerabilities)
 6.  [Sound the Alarm: Detection and Response](https://www.coursera.org/learn/detection-and-response)
 7.  [Automate Cybersecurity Tasks with Python](https://www.coursera.org/learn/automate-cybersecurity-tasks-with-python)
+8.  [Put It to Work: Prepare for Cybersecurity Jobs](https://www.coursera.org/learn/prepare-for-cybersecurity-jobs)
 
 # Hands-on activities
 
